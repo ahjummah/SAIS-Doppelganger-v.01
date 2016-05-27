@@ -5,12 +5,19 @@ class Student(models.Model):
 	fname = models.CharField(max_length=20, null=True, blank = True)
 	mname = models.CharField(max_length=20, null=True, blank = True)
 	lname = models.CharField(max_length=20, null=True, blank = True)
-	user_id = models.IntegerField(null=True, blank = True)
+	#user_id = models.IntegerField(null=True, blank = True)
 	student_id = models.CharField(max_length=10, null=True, blank = True) #PK
 	address = models.CharField(max_length = 10, null=True, blank = True)
+	gender = models.CharField(max_length = 10, null=True, blank = True)
+	maritalstatus = models.CharField(max_length = 15, null=True, blank = True)
+	
 
 	def __str__(self):
 		return str(self.student_id) + " : " + str(self.lname)
+
+class Account(models.Model):
+	student_id = models.ForeignKey('Student')
+	password = models.CharField(max_length = 20, null=True, blank = True)
 
 class SchoolInfo(models.Model):
 	student_id = models.ForeignKey('Student')
