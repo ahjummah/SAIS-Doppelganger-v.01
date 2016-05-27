@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register Account</title>
+</head>
+<body>
+
+	<h1>Registration Form</h1>
+	<br>
+	<form  action="{% url 'WebApp:submitForm' %}" method="POST" id="registerForm">
+	    {% csrf_token %} 
+		First name:  <input type="text" name="fname"><br><br>
+		Middle name: <input type="text" name="mname"><br><br>
+		Last name: <input type="text" name="lname"><br><br>
+		Student Number: <input type="text" name="student_id"><br><br>
+		Address: <input type="text" name="address"><br><br>
+		Course: <input type="text" name="course"><br><br>
+		Year: <input type="text" name="yr"><br><br>
+		STS Bracket: <input type="text" name="stsbracket">
+		<br><br><br><br>
+		<input type="submit" name="register">
+
+	</form>
+</body>
+</html>

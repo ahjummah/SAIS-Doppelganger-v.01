@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+<html>
+<head>
+	<title>Student Access Information System</title>
+</head>
+<body background="grey-bg.png">
+<table width=auto align="center" cellspacing="0" cellpadding="0" >
+	<td>
+	<div id = header>
+		<img src=" {% static 'WebApp/img/hd.jpg' %} "q/>
+	</div>
+	
+	<table bgcolor="white" cellpadding="20">
+	<div id = links> 
+		<a href="{% url 'WebApp:register' %}">Register an Account</a>
+	</div>
+	</td>
+	</table>
+	
+</table>
+
+</body>
+</html>
