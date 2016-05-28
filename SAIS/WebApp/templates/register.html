@@ -7,7 +7,7 @@
 
 	<h1>Registration Form</h1>
 	<br>
-	<form  action="{% url 'WebApp:submitForm' %}" method="POST" id="registerForm">
+	<form  action="{% url 'WebApp:register' %}" method="POST" id="registerForm">
 	    {% csrf_token %} 
 		First name:  <input type="text" name="fname"><br><br>
 		Middle name: <input type="text" name="mname"><br><br>
