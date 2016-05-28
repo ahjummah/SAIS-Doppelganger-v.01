@@ -10,13 +10,14 @@ def index(request):
 def indexStudent(request):
 	return render(request,'indexStudent.html')
 
-def login(request):
+def loginPage(request):
 	return render(request, 'login.html')
 
 def formLogin(request):
 	user = User()
-	username = request.POST.get('student_id', False)
-	password = request.POST.get('password', False)
+	username = request.POST.get('username')
+	print(username)
+	password = request.POST.get('password')
 	user = authenticate(username = username, password =password)
 	if user is not None:
 	    # the password verified for the user

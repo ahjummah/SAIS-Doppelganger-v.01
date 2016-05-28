@@ -4,8 +4,9 @@
 	<title>Index</title>
 </head>
 <body>
-<form  action="{% url 'WebApp:viewIndex-S %}" method="GET" id="loginForm">
-Welcome, user!
+<form  action="{% url 'WebApp:viewIndexStudent' %}" method="GET" id="IndexStudent">
+	{% csrf_token %} 
+	Welcome, user!
 </form>
 </body>
 </html>

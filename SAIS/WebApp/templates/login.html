@@ -6,9 +6,9 @@
 <body>
 
 	<h1>Log in</h1>
-	<form  action="{% url 'WebApp:submitLogin' %}" method="GET" id="loginForm">
+	<form  action="{% url 'WebApp:submitLogin' %}" method="POST" id="loginForm">
 	{% csrf_token %} 
-	Student-ID: <input type="text" name="student_id"><br>
+	Student-ID: <input type="text" name="username"><br>
 	Password: <input type="text" name="password"><br>
 	<input type="submit" name="login">
 
