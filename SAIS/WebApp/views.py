@@ -15,28 +15,28 @@ class LoginView(View):
 
 class RegistrationView(View):
 	
-	# def get(self, request):
-	# 	return render(request, 'register.html')
-
 	def get(self, request):
-		
-		student = Student()
-		studentInfo = SchoolInfo()
-		student.fname = request.POST['fname']
-		student.mname = request.POST['mname']
-		student.lname = request.POST['lname']
-		student.student_id = request.POST['student_id']
-		student.address = request.POST['address']
-		student.gender = request.POST['gender']
-		student.maritalstatus = request.POST['maritalstatus']
-		student.save()
-		studentInfo.student_id = student
-		studentInfo.course = request.POST['course']
-		studentInfo.year = request.POST['year']
-		studentInfo.sts_code = request.POST['sts_code']
-		studentInfo.save()
+		return render(request, 'register.html')
+
+def formRegister(request):
+	
+	student = Student()
+	studentInfo = SchoolInfo()
+	student.fname = request.POST['fname']
+	student.mname = request.POST['mname']
+	student.lname = request.POST['lname']
+	student.student_id = request.POST['student_id']
+	student.address = request.POST['address']
+	student.gender = request.POST['gender']
+	student.maritalstatus = request.POST['maritalstatus']
+	student.save()
+	studentInfo.student_id = student
+	studentInfo.course = request.POST['course']
+	studentInfo.year = request.POST['year']
+	studentInfo.sts_code = request.POST['sts_code']
+	studentInfo.save()
 
 
-		return render(self.request, 'main.html')
+	return render(request, 'main.html')
 
 # Create your views here.
