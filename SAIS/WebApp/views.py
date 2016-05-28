@@ -18,29 +18,19 @@ class LoginView(View):
 class StudentView(View):
 
 	def get(self, request):
-		return render(self.equest,'indexStudent.html')
+		return render(self.request,'indexStudent.html')
 
 class LoginView(View):
 	"""docstring for LoginView"""
 	def get(self, request):
-		user = User()
-		username = request.POST.get('student_id', False)
-		password = request.POST.get('password', False)
-		user = authenticate(username = username, password =password)
-		if user is not None:
-		    # the password verified for the user
-		
-		  		login(request, user)
-		  		return render(self.request, 'indexStudent.html')
-		 
-		else:  # Return an 'invalid login' error message.
-			print("The username and password were incorrect.")
-			return render(self.request, 'login.html')
+		return render(self.request, 'login.html')
 
-	def post(self,request):
+	def post(self, request):
 		user = User()
-		username = request.POST.get('student_id', False)
-		password = request.POST.get('password', False)
+		username = request.POST.get('student_id')
+		password = request.POST.get('password')
+		username = Student.objects.get(student_id=username)
+		username = username.user_id.username
 		user = authenticate(username = username, password =password)
 		if user is not None:
 		    # the password verified for the user
@@ -82,5 +72,8 @@ class RegistrationView(View):
 		user.last_name = student.lname
 		user.first_name = student.fname
 		user.save()
+
+		student.user_id = user;
+		student.save()
 
 		return render(self.request, 'main.html')
