@@ -5,9 +5,9 @@
 </head>
 <body>
 
-	<h1>Registration Form</h1>
+		<h1>Registration Form</h1>
 	<br>
-	<form  action="{% url 'WebApp:submitForm' %}" method="POST" id="registerForm">
+	<form  action="{% url 'WebApp:submitRegister' %}" method="POST" id="registerForm">
 	    {% csrf_token %} 
 		First name:  <input type="text" name="fname"><br><br>
 		Middle name: <input type="text" name="mname"><br><br>
@@ -16,10 +16,13 @@
 		Gender: <input type="text" name="gender"><br><br>
 		Marital Status: <input type="text" name="maritalstatus"><br><br>
 		Student Number: <input type="text" name="student_id"><br><br>
+		Email : <input type="text" name="email"><br><br>
+
 		
 		Course: <input type="text" name="course"><br><br>
 		Year: <input type="text" name="year"><br><br>
 		STS Bracket: <input type="text" name="sts_code">
+		Password: <input type="text" name="password">
 		<br><br><br><br>
 		<input type="submit" name="register">
 
