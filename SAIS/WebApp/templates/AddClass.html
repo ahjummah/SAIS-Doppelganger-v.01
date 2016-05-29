@@ -6,11 +6,12 @@
 <body>
 <form  action="{% url 'WebApp:addclass' %}" method="POST" id="addClassForm">
 	{% csrf_token %} 
-Welcome, {{ user }}! 
+	ADD CLASS: <br><br>
 	Search: <input type="text" name="searchbox">
 	<input type="submit" name="searchClass">
-
+	<br><br>
 	Retrieved classes: 
+	<br><br>
 		{{ subjectcode }}
 
 </form>

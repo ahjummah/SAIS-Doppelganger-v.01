@@ -96,9 +96,6 @@ class AddClassView(View):
 	def post(self, request):
 		keyword = request.POST.get('searchbox')
 		print("Keyword is: " + keyword)
-
-		subject_object = Subjects.objects.filter(subject_code__icontains=keyword)
-		
 		context = {}
 		context['subjectcode'] = Subjects.objects.filter(subject_code__icontains=keyword)
 		return render(self.request,'AddClass.html',context=context)
