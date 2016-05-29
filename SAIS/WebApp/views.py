@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from WebApp.models import Student, SchoolInfo
-
+from django.template import Context
 class IndexView(View):
 	
 	def get(self, request):
 		return render(self.request, 'main.html')
-
+		
 class LoginView(View):
 
 	def get(self, request):
@@ -77,3 +77,43 @@ class RegistrationView(View):
 		student.save()
 
 		return render(self.request, 'main.html')
+
+class EditView(View):
+
+	# def get_template_names(self):
+	#     """
+	#     Returns a list of template names to be used for the request. Must return
+	#     a list. May not be called if render_to_response is overridden.
+	#     """
+	#     self.template_name = 'EditProfile.html'
+	#     if self.template_name is None:
+	#         raise ImproperlyConfigured(
+	#             "TemplateResponseMixin requires either a definition of "
+	#             "'template_name' or an implementation of 'get_template_names()'")
+	#     else:
+	#         return [self.template_name]
+
+	# def get_object(self):
+	# 	object = Student.objects.filter(student_id='12345')
+
+	# 	return object
+	
+	def get(self, request):
+	    student_object = Student.objects.filter(student_id='12345')
+	    # firstname = student_object.get().fname
+	    contect = Context({
+	    	'firstname': student_object.get().fname
+	    	'middlename': student_object.get().mname
+	    	'lastname': student_object.get().lname
+	    	'address': student_object.get().address
+	    	
+	    	})
+	    print(firstname)
+
+	    return render(self.request, 'EditProfile.html', {'firstname': firstname})
+
+	def post(self, request):
+
+		return render(self.request, 'main.html')
+	
+		
