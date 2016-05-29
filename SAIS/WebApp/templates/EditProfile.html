@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Register Account</title>
+	<title>Edit</title>
 </head>
 <body>
 
-		<h1>Registration Form</h1>
+		<h1>Edit Profile</h1>
 	<br>
-	<form  action="{% url 'WebApp:register' %}" method="POST" id="registerForm">
+	<form  action="{% url 'WebApp:edit' %}" method="GET" id="registerForm">
 	    {% csrf_token %} 
-		First name:  <input type="text" name="fname"><br><br>
+		First name:  <input type="text" id="fname" name="fname" value="{{ firstname }}"><br><br>
 		Middle name: <input type="text" name="mname"><br><br>
 		Last name: <input type="text" name="lname"><br><br>
 		Address: <input type="text" name="address"><br><br>
