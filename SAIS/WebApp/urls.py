@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^profile$', StudentView.as_view(), name = 'viewIndexS'),
 	url(r'^edit$', EditView.as_view(), name = 'edit'),
 	url(r'^logout$', LogoutView.as_view(), name = 'logout'),
+	url(r'^addclass$', AddClassView.as_view(), name = 'addclass'),
 ]

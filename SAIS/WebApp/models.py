@@ -38,6 +38,13 @@ class Schedule(models.Model):
 	day = models.CharField(max_length=10, null=True, blank=True)
 	time = models.CharField(max_length=20, null=True, blank=True)
 
+	def __str__(self):
+		return str(self.subject_id) + " : " +str(self.day) +" "+ str(self.time) 
+
+class Enrolled(models.Model):
+	student_id = models.ForeignKey('Student')
+	subject_code = models.ForeignKey('Subjects')
+
 class Account(models.Model):
 	student_id = models.ForeignKey('SchoolInfo')
 	transactions = models.CharField(max_length=20, null=True, blank=True)#Payment or Loan#

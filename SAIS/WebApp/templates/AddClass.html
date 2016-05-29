@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Class</title>
+</head>
+<body>
+<form  action="{% url 'WebApp:addclass' %}" method="POST" id="addClassForm">
+	{% csrf_token %} 
+Welcome, {{ user }}! 
+	Search: <input type="text" name="searchbox">
+	<input type="submit" name="searchClass">
+
+	Retrieved classes: 
+		{{ subjectcode }}
+
+</form>
+</body>
+</html>
