@@ -4,6 +4,10 @@
 	<title>Index</title>
 </head>
 <body>
+<form  action="{% url 'WebApp:viewIndexS' %}" method="POST" id="indexForm">
+	{% csrf_token %} 
 Welcome, user!
+</form>
+
 </body>
 </html>

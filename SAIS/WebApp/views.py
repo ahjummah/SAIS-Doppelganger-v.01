@@ -99,18 +99,24 @@ class EditView(View):
 	# 	return object
 	
 	def get(self, request):
-	    student_object = Student.objects.filter(student_id='12345')
+	    student_object = Student.objects.filter(student_id='2013-37859')
+	  #  schoolinfo_object = SchoolInfo.objects.filter(student_id='2013-37859')
 	    # firstname = student_object.get().fname
-	    contect = Context({
-	    	'firstname': student_object.get().fname
-	    	'middlename': student_object.get().mname
-	    	'lastname': student_object.get().lname
-	    	'address': student_object.get().address
-	    	
+	    context = Context({
+	    	'firstname': student_object.get().fname,
+	    	'middlename': student_object.get().mname,
+	    	'lastname': student_object.get().lname,
+	    	'address': student_object.get().address,
+	    	'gender': student_object.get().gender,
+	    	'maritalstatus': student_object.get().maritalstatus,
+	    	'student_id': student_object.get().student_id,
+	    	'email': student_object.get().email,
+	   # 	'course': schoolinfo_object.get().course,
+	    #	'year': schoolinfo_object.get().year,
+	    #	'sts_code': schoolinfo_object.get().sts_code,
 	    	})
-	    print(firstname)
 
-	    return render(self.request, 'EditProfile.html', {'firstname': firstname})
+	    return render(self.request, 'EditProfile.html', context = context)
 
 	def post(self, request):
 
