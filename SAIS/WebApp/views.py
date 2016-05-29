@@ -10,10 +10,6 @@ class IndexView(View):
 	def get(self, request):
 		return render(self.request, 'main.html')
 		
-class LoginView(View):
-
-	def get(self, request):
-		return render(self.request, 'login.html')
 
 class StudentView(View):
 
