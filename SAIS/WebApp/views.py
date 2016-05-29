@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
@@ -18,7 +18,9 @@ class LoginView(View):
 class StudentView(View):
 
 	def get(self, request):
-		return render(self.request,'indexStudent.html')
+		context = {}
+		context['user'] = request.user
+		return render(self.request,'indexStudent.html',context=context)
 
 class LoginView(View):
 	"""docstring for LoginView"""
@@ -33,17 +35,16 @@ class LoginView(View):
 		username = username.user_id.username
 		user = authenticate(username = username, password =password)
 		if user is not None:
-		    # the password verified for the user
-		
+		    # the password verified for the user		
 		  		login(request, user)
-		  		return render(self.request, 'indexStudent.html')
+		  		return redirect('WebApp:viewIndexS')
 		 
 		else:  # Return an 'invalid login' error message.
 			print("The username and password were incorrect.")
 			return render(self.request, 'login.html')
 
 class LogoutView(View):
-	def post(self, request):
+	def get(self, request):
 		logout(self.request)
 		return render(self.request, 'logout.html')
 
