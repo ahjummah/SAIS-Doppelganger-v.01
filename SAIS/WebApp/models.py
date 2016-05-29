@@ -29,10 +29,12 @@ class Subjects(models.Model):
 	subject_code = models.CharField(max_length=20, null=True, blank=True)
 	cluster_code = models.CharField(max_length=20, null=True, blank=True)
 	prof_id = models.CharField(max_length=20, null=True, blank=True)
-	schedule_id = models.IntegerField(null=True, blank=True)
+
+	def __str__(self):
+		return str(self.subject_code)
 
 class Schedule(models.Model):
-	schedule_id = models.ForeignKey('Subjects')
+	subject_id = models.ForeignKey('Subjects')
 	day = models.CharField(max_length=10, null=True, blank=True)
 	time = models.CharField(max_length=20, null=True, blank=True)
 

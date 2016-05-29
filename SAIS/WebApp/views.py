@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.views.generic import View, DetailView
-from WebApp.models import Student, SchoolInfo
+from WebApp.models import Student, SchoolInfo, Subjects
 from django.template import Context
 class IndexView(View):
 	
