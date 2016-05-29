@@ -7,6 +7,8 @@
 <form  action="{% url 'WebApp:viewIndexS' %}" method="POST" id="indexForm">
 	{% csrf_token %} 
 Welcome, user!
+	<a href="{% url 'WebApp:logout' %}">Log out</a>
+
 </form>
 
 </body>

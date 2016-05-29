@@ -42,6 +42,11 @@ class LoginView(View):
 			print("The username and password were incorrect.")
 			return render(self.request, 'login.html')
 
+class LogoutView(View):
+	def post(self, request):
+		logout(self.request)
+		return render(self.request, 'logout.html')
+
 class RegistrationView(View):
 	
 	def get(self, request):
@@ -100,8 +105,9 @@ class EditView(View):
 	
 	def get(self, request):
 	    student_object = Student.objects.filter(student_id='2013-37859')
-	  #  schoolinfo_object = SchoolInfo.objects.filter(student_id='2013-37859')
-	    # firstname = student_object.get().fname
+	    schoolinfo_object = SchoolInfo.objects.filter(student_id=student_object)
+	    print(schoolinfo_object.get().course)
+
 	    context = Context({
 	    	'firstname': student_object.get().fname,
 	    	'middlename': student_object.get().mname,
@@ -111,11 +117,10 @@ class EditView(View):
 	    	'maritalstatus': student_object.get().maritalstatus,
 	    	'student_id': student_object.get().student_id,
 	    	'email': student_object.get().email,
-	   # 	'course': schoolinfo_object.get().course,
-	    #	'year': schoolinfo_object.get().year,
-	    #	'sts_code': schoolinfo_object.get().sts_code,
+	    	'course': schoolinfo_object.get().course,
+	    	'year': schoolinfo_object.get().year,
+	    	'sts_code': schoolinfo_object.get().sts_code,
 	    	})
-
 	    return render(self.request, 'EditProfile.html', context = context)
 
 	def post(self, request):
