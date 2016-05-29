@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.views.generic import View, DetailView
 from WebApp.models import Student, SchoolInfo
@@ -44,9 +44,9 @@ class LoginView(View):
 			return render(self.request, 'login.html')
 
 class LogoutView(View):
-	def get(self, request):
-		logout(self.request)
-		return render(self.request, 'logout.html')
+	def post(self, request):
+		logout(request, user)
+		return redirect('WebApp:logout')
 
 class RegistrationView(View):
 	
@@ -105,11 +105,12 @@ class EditView(View):
 	# 	return object
 	
 	def get(self, request):
-	    student_object = Student.objects.filter(student_id='2013-37859')
+
+	    student_object = Student.objects.filter(user_id=request.user)
 	    schoolinfo_object = SchoolInfo.objects.filter(student_id=student_object)
 	    print(schoolinfo_object.get().course)
 
-	    context = Context({
+	    dictionary = {
 	    	'firstname': student_object.get().fname,
 	    	'middlename': student_object.get().mname,
 	    	'lastname': student_object.get().lname,
@@ -121,8 +122,8 @@ class EditView(View):
 	    	'course': schoolinfo_object.get().course,
 	    	'year': schoolinfo_object.get().year,
 	    	'sts_code': schoolinfo_object.get().sts_code,
-	    	})
-	    return render(self.request, 'EditProfile.html', context = context)
+	    	}
+	    return render(self.request, 'EditProfile.html', dictionary)
 
 	def post(self, request):
 
