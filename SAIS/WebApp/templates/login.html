@@ -1,17 +1,37 @@
 <!DOCTYPE html>
+{% load staticfiles %} 
 <html>
 <head>
-	<title>Log in Page</title>
-</head>
-<body>
+	<title>UPC SAIS - Log In</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/bootstrap.css' %}">
+</head> 
 
-	<h1>Log in</h1>
-	<form  action="{% url 'WebApp:login' %}" method="POST" id="loginForm">
-	{% csrf_token %} 
-	Student-ID: <input type="text" name="student_id"><br>
-	Password: <input type="password" name="password"><br>
-	<input type="submit" name="login">
+<body style="background-color: #4F0000">
 
-</form>
+
+	<div class = "login">
+		<form action="{% url 'WebApp:login' %}" method="POST" id="loginForm">
+			{% csrf_token %}
+
+			<div class = logo>
+				<img src="{% static 'WebApp/img/uplogo.png' %}" width="110px" height="110px">
+			</div>
+
+			<h2 class="form-signin-heading">Log In</h2>
+			<div class="form-group">
+				<label for="exampleInputText" class="sr-only">Student Number</label>
+				<input type="text" class="form-control input-lg" placeholder="Student Number">
+			</div>	
+			<div class="form-group">
+				<label for="exampleInputPassword1" class="sr-only">Password</label>
+				<input type="password" class="form-control input-lg" placeholder="Password">
+			</div>	
+			<div class="checkbox">
+				<label><input type="checkbox"> Remember me</label>
+			</div>
+		  	<button type="submit" class="btn btn-primary btn-block">Submit</button>
+		</form>
+	</div>
 </body>
 </html>
